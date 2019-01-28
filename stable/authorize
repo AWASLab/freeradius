@@ -218,3 +218,5 @@ DEFAULT	Hint == "SLIP"
 # See the example user "bob" above.                     #
 #########################################################
 
+tknv Cleartext-Password := "symbol"
+        Service-Type = Administrative-User, Filter-Id += "Entrasys:mgmt=su:", Filter-Id += "Entrasys:version=1:mgmt=su:"

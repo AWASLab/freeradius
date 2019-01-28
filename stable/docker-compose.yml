@@ -11,13 +11,16 @@ services:
       - 1813:1813/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
-#      - ./clients.conf:/etc/raddb/clients.conf
-#      - ./radiusd.conf:/etc/raddb/radiusd.conf
-#      - ./authorize:/etc/raddb/mods-config/files/authorize
+      - ./clients.conf:/etc/raddb/clients.conf
+      - ./radiusd.conf:/etc/raddb/radiusd.conf
+      - ./authorize:/etc/raddb/mods-config/files/authorize
+      - ./default:/etc/raddb/site-available/default  # for mac address auth or 802.1x
+      - ./authorized_macs:/etc/raddb/authorized_macs  # accept mac address list
+      - ./files:/etc/raddb/mods-available/files # set mac address list file
 #      - ./certs:/etc/freeradius/certs
     environment:
       - TZ=UTC
-#      - RADIUSD_OPTS=-xx # Enable this for FreeRadius extra log verbosity/degub
+      - RADIUSD_OPTS=-xx # Enable this for FreeRadius extra log verbosity/degub
 
   freeradius-test:
     image: goofball222/freeradius

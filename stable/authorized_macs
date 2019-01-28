@@ -1,0 +1,5 @@
+64-80-99-99-FD-EF
+        Reply-Message = "Device with MAC Address %{Calling-Station-Id} authorized for network access"
+20-72-0D-39-2B-3D
+        Reply-Message = "Device with MAC Address %{Calling-Station-Id} authorized for network access"
+
