@@ -2,7 +2,10 @@ version: '3'
 
 services:
   freeradius:
-    image: goofball222/freeradius
+    # image: goofball222/freeradius
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: freeradius
     network_mode: bridge
     restart: unless-stopped
@@ -17,7 +20,8 @@ services:
       - ./default:/etc/raddb/sites-available/default  # for mac address auth or 802.1x
       - ./authorized_macs:/etc/raddb/authorized_macs  # accept mac address list
       - ./files:/etc/raddb/mods-available/files # set mac address list file
-#      - ./certs:/etc/freeradius/certs
+      - ./eap:/etc/raddb/mods-available/eap # eap config
+#      - ./certs:/etc/freeradius/certs # do it by Dockerfile
     environment:
       - TZ=UTC
       - RADIUSD_OPTS=-xx # Enable this for FreeRadius extra log verbosity/degub

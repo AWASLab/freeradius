@@ -5,11 +5,11 @@ ARG VCS_REF
 ARG VERSION
 
 LABEL \
-    org.label-schema.vendor="The Goofball - goofball222@gmail.com" \
-    org.label-schema.url="https://github.com/goofball222/freeradius" \
+    org.label-schema.vendor="rreedd555@gmail.com" \
+    org.label-schema.url="https://github.com/AWASLab/freeradius" \
     org.label-schema.name="FreeRadius Docker Container" \
     org.label-schema.version=$VERSION \
-    org.label-schema.vcs-url="https://github.com/goofball222/freeradius.git" \
+    org.label-schema.vcs-url="https://github.com/AWASLab/freeradius.git" \
     org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.license="Apache-2.0" \
@@ -22,6 +22,9 @@ ENV \
     RADIUSD_OPTS=
 
 COPY root /
+# COPY certs
+COPY certs /etc/raddb/certs
+RUN chmod uog+r /etc/raddb/certs/*
 
 RUN \
     set -x \
@@ -33,6 +36,7 @@ RUN \
         bash freeradius freeradius-radclient tzdata \
 #   Alpine FreeRadius unused mods Kitchen Sink list, for future reference 2018-08-19.
 #       freeradius-checkrad freeradius-doc freeradius-eap freeradius-krb5 freeradius-ldap \
+        freeradius-eap \
 #       freeradius-lib freeradius-mssql freeradius-mysql freeradius-pam freeradius-perl \
 #       freeradius-postgresql freeradius-python freeradius-redis freeradius-rest freeradius-sql \
 #       freeradius-sqlite freeradius-unixodbc \
