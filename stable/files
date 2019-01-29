@@ -27,10 +27,10 @@ files {
 	#  They will be renamed in a future release.
 	acctusersfile = ${moddir}/accounting
 	preproxy_usersfile = ${moddir}/pre-proxy
-# }
+}
 
-# files authorized_macs {
-	authorized_macs {
+files authorized_macs {
+#	authorized_macs {
         # The default key attribute to use for matches.  The content
         # of this attribute is used to match the "name" of the
         # entry.
@@ -42,6 +42,6 @@ files {
         #  with FreeRADIUS, you should change the next line
         #  to 'compat = cistron'.  You can the copy your 'users'
         #  file from Cistron.
-        compat = no
-	}
+#        compat = no
+#	}
 }
